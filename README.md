@@ -181,6 +181,48 @@ Open in browser: [http://localhost:9000](http://localhost:9000)
 
 </details>
 
+<details open>
+<summary>Self-Hosting</summary>
+
+</br>
+
+![setup](/frontend/Images/self-hosting.png)
+
+## **Requirements**
+
+- A clean server running **Ubuntu 22.04 or 24.04 LTS**
+- **Root access** to the Server
+- A **domain or subdomain** pointing to your server’s public IPv4
+
+---
+
+## Note
+
+When **prompted**, simply **enter your domain or subdomain**. Then wait for the installation to complete.
+
+```bash
+# Install
+wget -qO web-install.sh https://docs.mirotalk.com/scripts/cme/web-install.sh \
+  && chmod +x web-install.sh \
+  && ./web-install.sh
+```
+
+```bash
+# Uninstall
+wget -qO web-uninstall.sh https://docs.mirotalk.com/scripts/cme/web-uninstall.sh \
+  && chmod +x web-uninstall.sh \
+  && ./web-uninstall.sh
+```
+
+```bash
+# Update
+wget -qO web-update.sh https://docs.mirotalk.com/scripts/cme/web-update.sh \
+  && chmod +x bro-update.sh \
+  && ./web-update.sh
+```
+
+</details>
+
 <details>
 <summary>Documentations</summary>
 
