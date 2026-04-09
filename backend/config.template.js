@@ -72,6 +72,17 @@ module.exports = {
                 Shields: 'https://img.shields.io/github/stars/miroslavpejic85/mirotalkbro?style=flat',
             },
         },
+        CME: {
+            Visible: true,
+            Label: 'MiroTalk CME',
+            Home: 'https://cme.mirotalk.com',
+            GitHub: {
+                Visible: true,
+                Repo: 'https://github.com/miroslavpejic85/call-me',
+                Star: 'https://github.com/miroslavpejic85/call-me/stargazers',
+                Shields: 'https://img.shields.io/github/stars/miroslavpejic85/call-me?style=flat',
+            },
+        },
     },
     HTML: {
         support: true,

@@ -793,6 +793,12 @@ body.dark .dash-content .boxes .box:hover {
 .boxes .box.stat-accent-purple .stat-icon-wrap i {
     color: var(--purple-color);
 }
+.boxes .box.stat-accent-red .stat-icon-wrap {
+    background-color: var(--danger-bg);
+}
+.boxes .box.stat-accent-red .stat-icon-wrap i {
+    color: var(--danger-color);
+}
 
 .dsRooms {
     display: block;

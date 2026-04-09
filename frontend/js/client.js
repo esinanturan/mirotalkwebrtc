@@ -9,7 +9,7 @@
  * @license For private project or commercial purposes contact us at: license.mirotalk@gmail.com or purchase it directly via Code Canyon:
  * @license https://codecanyon.net/item/a-selfhosted-mirotalks-webrtc-rooms-scheduler-server/42643313
  * @author  Miroslav Pejic - miroslav.pejic.85@gmail.com
- * @version 1.3.45
+ * @version 1.3.46
  */
 
 const userAgent = navigator.userAgent;
@@ -33,6 +33,7 @@ const navC2C = document.getElementById('navC2C');
 const navP2P = document.getElementById('navP2P');
 const navSFU = document.getElementById('navSFU');
 const navBRO = document.getElementById('navBRO');
+const navCME = document.getElementById('navCME');
 const navSup = document.getElementById('navSup');
 const navAcc = document.getElementById('navAcc');
 const navSet = document.getElementById('navSet');
@@ -44,6 +45,7 @@ const navP2PLabel = document.getElementById('navP2PLabel');
 const navSFULabel = document.getElementById('navSFULabel');
 const navC2CLabel = document.getElementById('navC2CLabel');
 const navBROLabel = document.getElementById('navBROLabel');
+const navCMELabel = document.getElementById('navCMELabel');
 
 const tableAppName = document.getElementById('tableAppName');
 const rowAppName = document.getElementById('rowAppName');
@@ -106,15 +108,22 @@ const repoBRO = document.getElementById('repoBRO');
 const starBRO = document.getElementById('starBRO');
 const shieldsBRO = document.getElementById('shieldsBRO');
 
+const boxCME = document.getElementById('boxCME');
+const repoCME = document.getElementById('repoCME');
+const starCME = document.getElementById('starCME');
+const shieldsCME = document.getElementById('shieldsCME');
+
 const p2p = document.getElementById('p2p');
 const sfu = document.getElementById('sfu');
 const c2c = document.getElementById('c2c');
 const bro = document.getElementById('bro');
+const cme = document.getElementById('cme');
 
 const p2pIframe = document.getElementById('p2p-iframe');
 const sfuIframe = document.getElementById('sfu-iframe');
 const c2cIframe = document.getElementById('c2c-iframe');
 const broIframe = document.getElementById('bro-iframe');
+const cmeIframe = document.getElementById('cme-iframe');
 
 const accountDiv = document.getElementById('accountDiv');
 const accountClose = document.getElementById('account-close-btn');
@@ -395,16 +404,25 @@ function loadConfig(cfg) {
     repoBRO.setAttribute('href', config.MiroTalk.BRO.GitHub.Repo);
     starBRO.setAttribute('href', config.MiroTalk.BRO.GitHub.Star);
     shieldsBRO.setAttribute('src', config.MiroTalk.BRO.GitHub.Shields);
+    if (config.MiroTalk.CME) {
+        repoCME.setAttribute('href', config.MiroTalk.CME.GitHub.Repo);
+        starCME.setAttribute('href', config.MiroTalk.CME.GitHub.Star);
+        shieldsCME.setAttribute('src', config.MiroTalk.CME.GitHub.Shields);
+    }
     p2pIframe.setAttribute('src', config.MiroTalk.P2P.Room);
     sfuIframe.setAttribute('src', config.MiroTalk.SFU.Room);
     c2cIframe.setAttribute('src', config.MiroTalk.C2C.Home);
     broIframe.setAttribute('src', config.MiroTalk.BRO.Home);
+    if (config.MiroTalk.CME) {
+        cmeIframe.setAttribute('src', config.MiroTalk.CME.Home);
+    }
     navLogoImage.setAttribute('src', appLogo);
     navLogoLabel.textContent = appName;
     navP2PLabel.textContent = config.MiroTalk.P2P.Label || 'MiroTalk P2P';
     navSFULabel.textContent = config.MiroTalk.SFU.Label || 'MiroTalk SFU';
     navC2CLabel.textContent = config.MiroTalk.C2C.Label || 'MiroTalk C2C';
     navBROLabel.textContent = config.MiroTalk.BRO.Label || 'MiroTalk BRO';
+    navCMELabel.textContent = config.MiroTalk.CME?.Label || 'MiroTalk CME';
     tableAppName.textContent = appName;
     rowAppName.textContent = appName;
 }
@@ -491,10 +509,12 @@ function toggleElements() {
     elemDisplay(navSFU, config.MiroTalk.SFU.Visible);
     elemDisplay(navC2C, config.MiroTalk.C2C.Visible);
     elemDisplay(navBRO, config.MiroTalk.BRO.Visible);
+    elemDisplay(navCME, config.MiroTalk.CME?.Visible);
     elemDisplay(boxP2P, config.MiroTalk.P2P.GitHub.Visible);
     elemDisplay(boxSFU, config.MiroTalk.SFU.GitHub.Visible);
     elemDisplay(boxC2C, config.MiroTalk.C2C.GitHub.Visible);
     elemDisplay(boxBRO, config.MiroTalk.BRO.GitHub.Visible);
+    elemDisplay(boxCME, config.MiroTalk.CME?.GitHub?.Visible);
     if (
         !config.MiroTalk.P2P.Visible &&
         !config.MiroTalk.SFU.Visible &&
@@ -509,7 +529,8 @@ function toggleElements() {
         !config.MiroTalk.P2P.GitHub.Visible &&
         !config.MiroTalk.SFU.GitHub.Visible &&
         !config.MiroTalk.C2C.GitHub.Visible &&
-        !config.MiroTalk.BRO.GitHub.Visible
+        !config.MiroTalk.BRO.GitHub.Visible &&
+        !config.MiroTalk.CME?.GitHub?.Visible
     ) {
         elemDisplay(boxesDS, false);
         elemDisplay(statsProjectsSection, false);
@@ -753,6 +774,11 @@ navBRO.addEventListener('click', () => {
     //broIframe.setAttribute('src', config.MiroTalk.BRO.Home);
 });
 
+navCME.addEventListener('click', () => {
+    navShow([cme], navCME);
+    //cmeIframe.setAttribute('src', config.MiroTalk.CME.Home);
+});
+
 navSup.addEventListener('click', () => {
     openURL(config.Author.Support, true);
 });
@@ -861,6 +887,7 @@ function navShow(elements = [], activeNav = null) {
     elemDisplay(sfu, false);
     elemDisplay(c2c, false);
     elemDisplay(bro, false);
+    elemDisplay(cme, false);
     elements.forEach((element, i) => {
         element.style.display = 'block';
     });
