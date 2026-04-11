@@ -1,6 +1,8 @@
 <h1 align="center">MiroTalk WEB</h1>
 
-<h3 align="center">Schedule and manage WebRTC video meeting rooms</h3>
+<h3 align="center">
+Self-hosted open-source WebRTC platform for scheduling and managing video meeting rooms across MiroTalk instances.
+</h3>
 
 <br />
 
@@ -19,7 +21,7 @@
 
 <br />
 
-<p align="center"><strong>MiroTalk WEB</strong> is a <strong>self-hosted, open-source</strong> platform for <strong>scheduling and managing WebRTC video meeting rooms</strong>. Users register with email, username, and password, then access a personal dashboard to create rooms, schedule meetings with any <a href="https://docs.mirotalk.com/overview/" target="_blank">MiroTalk</a> version, and send invitations via email, browser share, or SMS.</p>
+<p align="center"><strong>MiroTalk WEB</strong> is a <strong>self-hosted, open-source</strong> platform for <strong>scheduling, managing, and organizing WebRTC video meeting rooms.</strong>. It provides a personal dashboard where users can create accounts, schedule meetings for any <a href="https://docs.mirotalk.com/overview/" target="_blank">MiroTalk</a> version, and send invitations via email or shareable links.</p>
 
 <p align="center">
     <a href="https://webrtc.mirotalk.com">Try Live Demo</a> · <a href="https://docs.mirotalk.com/mirotalk-web/self-hosting/">Documentation</a> · <a href="https://discord.gg/rgGYfeYW3N">Discord</a> · <a href="https://github.com/sponsors/miroslavpejic85">Sponsor</a>
