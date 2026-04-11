@@ -1,308 +1,152 @@
-<h1 align="center">MiroTalk WebRTC</h1>
+<h1 align="center">MiroTalk WEB</h1>
+
+<h3 align="center">Schedule and manage WebRTC video meeting rooms</h3>
 
 <br />
 
 <div align="center">
 
+[![GitHub Stars](https://img.shields.io/github/stars/miroslavpejic85/mirotalkwebrtc?style=social)](https://github.com/miroslavpejic85/mirotalkwebrtc/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/miroslavpejic85/mirotalkwebrtc?style=social)](https://github.com/miroslavpejic85/mirotalkwebrtc/network/members)
+
+<a href="https://choosealicense.com/licenses/agpl-3.0/">![License: AGPLv3](https://img.shields.io/badge/License-AGPLv3_Open_Source-blue.svg)</a>
+<a href="https://hub.docker.com/r/mirotalk/webrtc">![Docker Pulls](https://img.shields.io/docker/pulls/mirotalk/webrtc)</a>
+<a href="https://github.com/miroslavpejic85/mirotalkwebrtc/commits/main">![Last Commit](https://img.shields.io/github/last-commit/miroslavpejic85/mirotalkwebrtc)</a>
+<a href="https://discord.gg/rgGYfeYW3N">![Discord](https://img.shields.io/badge/Discord-Community-5865F2?logo=discord&logoColor=white)</a>
 <a href="https://www.linkedin.com/in/miroslav-pejic-976a07101/">![Author](https://img.shields.io/badge/Author-Miroslav_Pejic-brightgreen.svg)</a>
-<a href="https://choosealicense.com/licenses/agpl-3.0/">![License: AGPLv3](https://img.shields.io/badge/License-AGPLv3_Open_Surce-blue.svg)</a>
-<a href="https://codecanyon.net/item/a-selfhosted-mirotalks-webrtc-rooms-scheduler-server/42643313">![License: Regular](https://img.shields.io/badge/License-Regular_Private_Use-lightblue.svg)</a>
-<a href="https://codecanyon.net/item/a-selfhosted-mirotalks-webrtc-rooms-scheduler-server/42643313">![License: Extended](https://img.shields.io/badge/License-Extended_Commercial_Use-darkgreen.svg)</a>
-<a href="https://discord.gg/rgGYfeYW3N">![Community](https://img.shields.io/badge/Community-forum-pink.svg)</a>
 
 </div>
 
-<p align="center">
-MiroTalk WEB is a platform that allows for the management of an unlimited number of users. Each user must register with their email, username, and password, after which they gain access to their personal dashboard. Within the dashboard, users can manage their rooms and schedule meetings using the desired version of MiroTalk on a specified date and time. Invitations to these meetings can be sent via email, shared through the web browser, or sent via SMS.
-</p>
+<br />
 
-<hr/>
+<p align="center"><strong>MiroTalk WEB</strong> is a <strong>self-hosted, open-source</strong> platform for <strong>scheduling and managing WebRTC video meeting rooms</strong>. Users register with email, username, and password, then access a personal dashboard to create rooms, schedule meetings with any <a href="https://docs.mirotalk.com/overview/" target="_blank">MiroTalk</a> version, and send invitations via email, browser share, or SMS.</p>
 
 <p align="center">
-    <a href="https://webrtc.mirotalk.com">Explore MiroTalk WEB</a>
+    <a href="https://webrtc.mirotalk.com">Try Live Demo</a> · <a href="https://docs.mirotalk.com/mirotalk-web/self-hosting/">Documentation</a> · <a href="https://discord.gg/rgGYfeYW3N">Discord</a> · <a href="https://github.com/sponsors/miroslavpejic85">Sponsor</a>
 </p>
 
 ---
 
-For demonstration purposes, below the credentials:
-
-- `Username`: demo
-- `Email`: demo@gmail.com
-- `Password`: Demo@123
+<p align="center">
+<code>Username</code>: demo · <code>Email</code>: demo@gmail.com · <code>Password</code>: Demo@123
+</p>
 
 ---
-
-| `MiroTalk`                                               | Description                                                                                                                                                                                |
-| -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 🚀 [P2P](https://github.com/miroslavpejic85/mirotalk)    | `Peer to peer` real-time video conferences, optimized for small groups. Unlimited time, unlimited concurrent rooms each having 5-8 participants.                                           |
-| 🏆 [SFU](https://github.com/miroslavpejic85/mirotalksfu) | `Selective forwarding unit` real-time video conferences, optimized for large groups. Unlimited time, unlimited concurrent rooms each having 8+ participants.                               |
-| ✨ [C2C](https://github.com/miroslavpejic85/mirotalkc2c) | `Cam to cam` (peer to peer) real-time video conferences, optimized for one to one. Unlimited time ,unlimited concurrent rooms each having 2 participants.                                  |
-| 📡 [BRO](https://github.com/miroslavpejic85/mirotalkbro) | `Live broadcast` (peer to peer) live video, audio and screen stream to all connected users (viewers). Unlimited time, unlimited concurrent rooms each having a broadcast and many viewers. |
-
-<br>
-
-![mirotalk-webrtc-admin](./frontend/Images/mirotalk-web.png)
-
-<hr />
-
-<strong>
-    <p align="center">
-        Join our Community for questions, help, support, ideas, and discussions on <a href='https://discord.gg/rgGYfeYW3N'>Discord</a>
-    </p>
-</strong>
-
-<hr />
-
-<details open>
-<summary>Quick start</summary>
-
-![nodejs](frontend/Images/nodejs.png)
-
-Install [NodeJs](https://nodejs.org/en/blog/release/v18.16.0).
-
-```bash
-# The project was tested with node version 18.16.0. So make sure to update the node version using nvm if you have multiple version installed.
-# After updating the node version, you can verify using
-$ node --version # v18.16.0
-
-# Clone the project repo
-$ git clone https://github.com/miroslavpejic85/mirotalkwebrtc.git
-
-# Go to project dir
-$ cd mirotalkwebrtc
-
-# Copy .env.template to .env and customize it according to your needs
-$ cp .env.template .env
-
-# Copy config.template.js to config.js and customize it according to your needs
-$ cp backend/config.template.js backend/config.js
-```
-
----
-
-### MongoDb
-
-![mongo-db](./frontend/Images/mongodb.png)
-
-#### Local MongoDB Deployment
-
-To run MongoDB locally with [Docker Compose](https://docs.docker.com/compose/install/), you can use the following commands:
-
-Start the MongoDB container:
-
-```bash
-$ npm run mongo:up
-```
-
-Stop the MongoDB container:
-
-```bash
-$ npm run mongo:down
-```
-
-<details>
-<summary>Cloud MongoDB Deployment (Optional)</summary>
 
 <br />
 
-For cloud MongoDB deployments, such as with <a href="https://www.mongodb.com/">MongoDB Atlas</a>, make sure to update the credentials in the `.env` file accordingly.
+<p align="center">
+    <a href="https://webrtc.mirotalk.com">
+        <img src="./frontend/Images/mirotalk-web.png" alt="MiroTalk WEB - WebRTC Meeting Rooms">
+    </a>
+</p>
+
+<hr />
+
+<br />
+
+<details open>
+<summary>⚡ Quick start</summary>
+
+<br/>
+
+**Start in a few commands:**
 
 ```bash
-# MongoDB Configuration (https://www.mongodb.com/)
-MONGO_URL=mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOST}:${MONGO_PORT}
-MONGO_DATABASE=mirotalk
+git clone https://github.com/miroslavpejic85/mirotalkwebrtc.git
+cd mirotalkwebrtc
+cp .env.template .env
+cp backend/config.template.js backend/config.js
+npm install
+npm run mongo:up   # start local MongoDB via Docker
+npm start
 ```
+
+Open [http://localhost:9000](http://localhost:9000) - done!
+
+> **Note:** For cloud MongoDB (e.g. [MongoDB Atlas](https://www.mongodb.com/)), update the credentials in `.env` instead of running `npm run mongo:up`.
 
 </details>
 
 <details>
-<summary>User Email Verification (Optional)</summary>
-
-<br />
-
-![email](./frontend/Images/email.png)
-
-By default, email verification is disabled. To enable it, set `EMAIL_VERIFICATION` to `true` in the `.env` file, and ensure the email settings are properly configured.
-
-```bash
-# Email Configuration (https://support.google.com/mail/answer/185833?hl=en)
-EMAIL_VERIFICATION=true
-EMAIL_HOST=emailHost
-EMAIL_PORT=emailPort
-EMAIL_USERNAME=emailUsername
-EMAIL_PASSWORD=emailPassword
-```
-
-</details>
-
-### Install dependencies and start the server
-
-```bash
-# Install dependencies
-$ npm install
-
-# Start the server
-$ npm start
-```
-
-Open in browser: [http://localhost:9000](http://localhost:9000)
-
-</details>
-
-<details open>
-<summary>Docker</summary>
+<summary>🐳 Docker</summary>
 
 <br/>
 
 ![docker](./frontend/Images/docker.png)
 
-Repository: [Docker hub](https://hub.docker.com/r/mirotalk/webrtc)
-
-Install [docker](https://docs.docker.com/engine/install/) and [docker-compose](https://docs.docker.com/compose/install/).
+**Prerequisites:** Install [Docker Engine](https://docs.docker.com/engine/install/) and [Docker Compose](https://docs.docker.com/compose/install/) - Image available on [Docker Hub](https://hub.docker.com/r/mirotalk/webrtc)
 
 ```bash
-# Clone the project repo
-$ git clone https://github.com/miroslavpejic85/mirotalkwebrtc.git
-# Go to project dir
-$ cd mirotalkwebrtc
-# Copy .env.template to .env and edit it
-$ cp .env.template .env
-# Copy config.template.js to config.js and edit it
-$ cp backend/config.template.js backend/config.js
-# Copy docker-compose.template.yml in docker-compose.yml and edit it if needed
-$ cp docker-compose.template.yml docker-compose.yml
-# Get official image from Docker Hub
-$ docker pull mirotalk/webrtc:latest
-# Create and start containers (-d as daemon)
-$ docker-compose up
+git clone https://github.com/miroslavpejic85/mirotalkwebrtc.git
+cd mirotalkwebrtc
+cp .env.template .env
+cp backend/config.template.js backend/config.js
+cp docker-compose.template.yml docker-compose.yml
+docker-compose pull    # optional: pull official image
+docker-compose up      # add -d to run in background
 ```
 
-Open in browser: [http://localhost:9000](http://localhost:9000)
+Open [http://localhost:9000](http://localhost:9000) - done!
+
+> **Note:** Edit `.env`, `backend/config.js`, and `docker-compose.yml` to customize your setup.
+
+</details>
+
+<details>
+<summary>📚 Documentation</summary>
+
+<br/>
+
+For detailed guides and references, visit the **[official documentation](https://docs.mirotalk.com)**:
+
+- [About](https://docs.mirotalk.com/mirotalk-web/)
+- [Self-Hosting Guide](https://docs.mirotalk.com/mirotalk-web/self-hosting/)
+- [Automation-scripts](https://docs.mirotalk.com/scripts/about/)
+- [Configurations](https://docs.mirotalk.com/mirotalk-web/configurations/)
+- [Integration](https://docs.mirotalk.com/mirotalk-web/integration/)
+- [REST API Documentation](https://docs.mirotalk.com/mirotalk-web/api/)
+- [Ngrok](https://docs.mirotalk.com/mirotalk-web/ngrok/)
 
 </details>
 
 <details open>
-<summary>Self-Hosting</summary>
+<summary>☁️ Recommended Hosting Providers</summary>
 
-</br>
+<br/>
 
-![setup](/frontend/Images/self-hosting.png)
+| Provider                                                                                    | Description                                                                                                | Link                                                                |
+| ------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| [![Hetzner](frontend/Images/hetzner.png)](https://www.hetzner.com)                          | High-performance cloud servers and dedicated root servers with top-tier reliability. Powers our live demo. | [Get €20 Free Credits](https://hetzner.cloud/?ref=XdRifCzCK3bn)     |
+| [![Netcup](frontend/Images/netcup.png)](https://www.netcup.com/en/?ref=309627)              | Enterprise-grade performance at unbeatable prices. Scalable and reliable.                                  | [Explore Netcup](https://www.netcup.com/en/?ref=309627)             |
+| [![Hostinger](frontend/Images/hostinger.png)](https://hostinger.com/?REFERRALCODE=MIROTALK) | Fast, reliable hosting with 24/7 support and great performance.                                            | [Check out Hostinger](https://hostinger.com/?REFERRALCODE=MIROTALK) |
+| [![Contabo](frontend/Images/contabo.png)](https://www.dpbolvw.net/click-101027391-14462707) | Top-tier German hosting, dedicated servers, VPS, and web hosting at unbeatable prices.                     | [Explore Contabo](https://www.dpbolvw.net/click-101027391-14462707) |
 
-## **Requirements**
-
-- A clean server running **Ubuntu 22.04 or 24.04 LTS**
-- **Root access** to the Server
-- A **domain or subdomain** pointing to your server’s public IPv4
-
----
-
-## Note
-
-When **prompted**, simply **enter your domain or subdomain**. Then wait for the installation to complete.
-
-```bash
-# Install
-wget -qO web-install.sh https://docs.mirotalk.com/scripts/cme/web-install.sh \
-  && chmod +x web-install.sh \
-  && ./web-install.sh
-```
-
-```bash
-# Uninstall
-wget -qO web-uninstall.sh https://docs.mirotalk.com/scripts/cme/web-uninstall.sh \
-  && chmod +x web-uninstall.sh \
-  && ./web-uninstall.sh
-```
-
-```bash
-# Update
-wget -qO web-update.sh https://docs.mirotalk.com/scripts/cme/web-update.sh \
-  && chmod +x bro-update.sh \
-  && ./web-update.sh
-```
+To set up your own instance of `MiroTalk WEB` on a dedicated cloud server, please refer to our comprehensive [self-hosting documentation](https://docs.mirotalk.com/mirotalk-web/self-hosting/).
 
 </details>
 
 <details>
-<summary>Documentations</summary>
-
-<br>
-
-- `MongoDB Migrations:` For MongoDB migrations follow [this README](./database/README.md).
-
-- `Ngrok:` You can start MiroTalk WEB directly from your local PC and make it accessible from any device outside your network by following [these instructions](docs/ngrok.md).
-
-- `Self-hosting:` For `self-hosting MiroTalk WEB` on your own dedicated server, please refer to [this comprehensive guide](https://docs.mirotalk.com/mirotalk-web/self-hosting/). It will provide you with all the necessary instructions to get your MiroTalk WEB instance up and running smoothly.
-
-- `Rest API:` You can check the swagger document at http://localhost:9000/api/v1/docs, or live [here](https://webrtc.mirotalk.com/api/v1/docs).
-
-</details>
-
-<details open>
-<summary>Hetzner, Netcup, Hostinger & Contabo</summary>
+<summary>🤝 Contributing</summary>
 
 <br/>
 
-[![Hetzner](frontend/Images/hetzner.png)](https://hetzner.cloud/?ref=XdRifCzCK3bn)
+Contributions are welcome and greatly appreciated! Whether it's bug fixes, features, or documentation - every contribution helps.
 
-This application is running for `demonstration purposes` on [Hetzner](https://www.hetzner.com/), one of `the best` [cloud providers](https://www.hetzner.com/cloud) and [dedicated root servers](https://www.hetzner.com/dedicated-rootserver).
+1. Fork the repository
+2. Create your feature branch
+3. Submit a pull request
 
----
-
-👉 Use [my personal link](https://hetzner.cloud/?ref=XdRifCzCK3bn) to receive `€⁠20 IN CLOUD CREDITS`.
-
----
-
-[![Netcup](frontend/Images/netcup.png)](https://www.netcup.com/en/?ref=309627)
-
-Unlock `enterprise-grade performance` at a price you won’t believe.
-Scalable, reliable, and built for businesses that demand more.
-
-👉 [Power Meets Value with Netcup Root Server](https://www.netcup.com/en/?ref=309627)
-
----
-
-[![Hostinger](frontend/Images/hostinger.png)](https://hostinger.com/?REFERRALCODE=MIROTALK)
-
-Fast, reliable hosting with 24/7 support and great performance. Start today!
-
-👉 [Check out Hostinger now](https://hostinger.com/?REFERRALCODE=MIROTALK)
-
----
-
-[![Contabo](frontend/Images/contabo.png)](https://www.dpbolvw.net/click-101027391-14462707)
-
-Experience also top-tier German web hosting – dedicated servers, VPS, and web hosting at `unbeatable prices`.
-
-👉 [Explore now here](https://www.dpbolvw.net/click-101027391-14462707)
-
----
-
-To set up your own instance of `MiroTalk WEB` on a dedicated cloud server, please refer to our comprehensive [self-hosting documentation](https://docs.mirotalk.com/mirotalk-web/self-hosting/). This guide will walk you through the process step by step, ensuring a smooth and successful deployment.
+Have questions? Join our [Discord community](https://discord.gg/rgGYfeYW3N)!
 
 </details>
 
 <details>
-<summary>Support</summary>
+<summary>📄 License</summary>
 
 <br/>
 
-You can show your support for MiroTalk's projects by considering sponsorship. By sponsoring MiroTalk on platforms like GitHub Sponsors, you can contribute to our ongoing work and help us continue to develop and improve the projects.
-
-To support MiroTalk's projects, you can visit the sponsorship page at https://github.com/sponsors/miroslavpejic85. There, you will find the different sponsorship tiers available. You can choose a sponsorship level that suits your budget and desired level of support.
-
-Sponsoring MiroTalk's projects not only helps us financially but also encourages our motivation and dedication to creating valuable software. Your sponsorship can enable us to allocate more time and resources towards the projects, leading to further enhancements, bug fixes, and new features.
-
-Thank you for considering supporting MiroTalk's projects. Your sponsorship can make a positive difference and contribute to the success of our endeavors.
-
-</details>
-
-<details>
-<summary>License</summary>
-
-<br/>
-
-![AGPLv3](./frontend/Images/AGPLv3.png)
+[![AGPLv3](./frontend/Images/AGPLv3.png)](LICENSE)
 
 MiroTalk WEB is free and open-source under the terms of AGPLv3 (GNU Affero General Public License v3.0). Please `respect the license conditions`, In particular `modifications need to be free as well and made available to the public`. Get a quick overview of the license at [Choose an open source license](https://choosealicense.com/licenses/agpl-3.0/).
 
@@ -310,6 +154,25 @@ To obtain a [MiroTalk WEB license](https://docs.mirotalk.com/license/licensing-o
 
 </details>
 
+<details open>
+<summary>❤️ Support the project</summary>
+
+<br/>
+
+Do you find MiroTalk WEB indispensable for your needs? Join us in supporting this transformative project by [becoming a backer or sponsor](https://github.com/sponsors/miroslavpejic85). By doing so, not only will your logo prominently feature here, but you'll also drive the growth and sustainability of MiroTalk WEB. Your support is vital in ensuring that this valuable platform continues to thrive and remain accessible for all. Make an impact – back MiroTalk WEB today and be part of this exciting journey!
+
+</details>
+
+<br />
+
 ---
 
+🌐 **Explore all MiroTalk projects:**
+
+**[→ MiroTalk Overview](https://docs.mirotalk.com/overview/)**
+
 ![Star History Chart](https://app.repohistory.com/api/svg?repo=miroslavpejic85/mirotalkwebrtc&type=Date&background=0D1117&color=62C3F8)
+
+<p align="center">
+  Built with ❤️ by <a href="https://www.linkedin.com/in/miroslav-pejic-976a07101/">Miroslav</a> and the open-source community
+</p>
