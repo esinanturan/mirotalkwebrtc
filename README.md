@@ -1,6 +1,6 @@
 <div align="center">
     <a href="https://webrtc.mirotalk.com" target="_blank">
-        <img src="frontend/images/mirotalk-icon.png">
+        <img src="frontend/Images/mirotalk-icon.png">
     </a>
 </div>
 
