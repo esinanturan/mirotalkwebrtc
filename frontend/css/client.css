@@ -2648,6 +2648,24 @@ body.dark .custom-dropdown-options {
     font-size: 14px;
 }
 
+.addrow-field-content input.generated-text-active {
+    color: var(--accent-color);
+    font-family: var(--font-mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+}
+
+.addrow-gen-btn.generated-text-active i {
+    animation: generated-text-spin 450ms ease-out;
+}
+
+@keyframes generated-text-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 .addrow-submit-btn {
     width: 100%;
     margin-top: 14px;

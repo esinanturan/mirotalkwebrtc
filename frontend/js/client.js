@@ -9,7 +9,7 @@
  * @license For private project or commercial purposes contact us at: license.mirotalk@gmail.com or purchase it directly via Code Canyon:
  * @license https://codecanyon.net/item/a-selfhosted-mirotalks-webrtc-rooms-scheduler-server/42643313
  * @author  Miroslav Pejic - miroslav.pejic.85@gmail.com
- * @version 1.5.57
+ * @version 1.5.58
  */
 
 const userAgent = navigator.userAgent;
@@ -205,6 +205,7 @@ const myTableBody = document.getElementById('myTableBody');
 
 const DURATION_OPTIONS = [15, 30, 45, 60, 90, 120, 180, 240, 480];
 const DEFAULT_DURATION_MIN = 30;
+const generatedTextAnimationFrames = new WeakMap();
 
 function dropdownSearchRender(data, type) {
     if (type === 'filter' || type === 'search') {
@@ -1022,10 +1023,16 @@ addRowBtn.addEventListener('click', () => {
 });
 genRoom.addEventListener('click', (e) => {
     e.preventDefault();
-    addRoom.value = getUUID4();
     addRoom.style.borderColor = '';
     addRoom.style.boxShadow = '';
-    updateRoomLinkPreview();
+    animateGeneratedText({
+        input: addRoom,
+        trigger: genRoom,
+        value: getUUID4(),
+        alphabet: '0123456789abcdef',
+        blockedButton: addRowBtn,
+        onComplete: updateRoomLinkPreview,
+    });
 });
 
 refreshBtn.addEventListener('click', () => {
@@ -1056,7 +1063,13 @@ accountManageSubscription.addEventListener('click', () => {
 });
 
 addUserGeneratePassword.addEventListener('click', () => {
-    addUserPassword.value = generateRandomPassword();
+    animateGeneratedText({
+        input: addUserPassword,
+        trigger: addUserGeneratePassword,
+        value: generateRandomPassword(),
+        alphabet: 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!,%&@#$^*?_~',
+        blockedButton: addUserBtn,
+    });
 });
 
 settingsClose.addEventListener('click', () => {
@@ -3571,6 +3584,48 @@ function getUUID4() {
     return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, (c) =>
         (c ^ (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))).toString(16)
     );
+}
+
+function animateGeneratedText({ input, trigger, value, alphabet, blockedButton, onComplete }) {
+    cancelAnimationFrame(generatedTextAnimationFrames.get(input));
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        input.value = value;
+        if (onComplete) onComplete();
+        return;
+    }
+
+    const duration = 450;
+    const startedAt = performance.now();
+    const blockedButtonWasDisabled = blockedButton.disabled;
+    blockedButton.disabled = true;
+    trigger.disabled = true;
+    input.classList.add('generated-text-active');
+    trigger.classList.add('generated-text-active');
+
+    function revealGeneratedText(timestamp) {
+        const progress = Math.min((timestamp - startedAt) / duration, 1);
+        const revealedCharacters = Math.floor(value.length * progress);
+        input.value = Array.from(value, (character, index) => {
+            if (!alphabet.includes(character) || index < revealedCharacters) return character;
+            return alphabet[Math.floor(Math.random() * alphabet.length)];
+        }).join('');
+
+        if (progress < 1) {
+            generatedTextAnimationFrames.set(input, requestAnimationFrame(revealGeneratedText));
+            return;
+        }
+
+        input.value = value;
+        blockedButton.disabled = blockedButtonWasDisabled;
+        trigger.disabled = false;
+        input.classList.remove('generated-text-active');
+        trigger.classList.remove('generated-text-active');
+        generatedTextAnimationFrames.delete(input);
+        if (onComplete) onComplete();
+    }
+
+    generatedTextAnimationFrames.set(input, requestAnimationFrame(revealGeneratedText));
 }
 
 function getRoomURL(data, bro = true) {
