@@ -88,7 +88,7 @@ module.exports = {
     HTML: {
         about: {
             enabled: false,
-            url: 'https://docs.mirotalk.com/sites/web.html',
+            url: 'https://docs.mirotalk.com/sites/web',
         },
         support: {
             enabled: false,
